@@ -4,7 +4,7 @@ import time
 
 cam = cv2.VideoCapture("VideoTenThousandCave.avi")
 # cam = cv2.VideoCapture(0)
-cam.set(cv2.CAP_PROP_FPS, 3)
+# cam.set(cv2.CAP_PROP_FPS, 3)
 
 startcam = True
 num = 0

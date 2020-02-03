@@ -10,8 +10,8 @@ while True:
     name+=1
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-    elif cv2.waitKey(33) == ord('s'):
-        nameFile = str('Image'+str(name)+'.jpg')
+    if cv2.waitKey(33) == ord('s'):
+        nameFile = str('ImageTest'+str(name)+'.jpg')
         cv2.imwrite(nameFile,frame)
         print("Image saved as", name)
 
