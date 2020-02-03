@@ -1,11 +1,11 @@
-skala maksimal 360, 100, 100
+GIMP max Value = 360, 100, 100
+OpenCV max value = 180,255,255
+_________
 Lux 982 
 * 622
-tergelap = 192,38,47
-terterang = 193,31,95
+tergelap = 192,38,47 = 96.0, 96.9, 119.85
+terterang = 193,31,95 = 96.5, 79.05, 242.25
 * 684
-tergelap = 184,46,47
-terterang = 193,32,100
-
-
-
+tergelap = 184,46,47 = 92.0, 117.3, 119.85
+terterang = 193,32,100 = 96.5, 81.6, 255.0
+________
