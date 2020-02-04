@@ -3,6 +3,7 @@ import numpy as np
 import time
 
 cam = cv2.VideoCapture("VideoTenThousandCave.avi")
+# frame = cv2.imread("Example.png")
 # cam = cv2.VideoCapture(0)
 # cam.set(cv2.CAP_PROP_FPS, 3)
 
@@ -41,10 +42,10 @@ while startcam:
     # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (10,10))
     # nonoise = cv2.dilate(blur, kernel)
 
-    # filterImg = cv2.erode(mask,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(10,10)))
-    filterImg = cv2.dilate(mask,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(10,10)))
+    ImgErode = cv2.erode(mask,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5)))
+    ImgDilate = cv2.dilate(ImgErode,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(10,10)))
 
-    contours, hierarchy = cv2.findContours(filterImg,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)[-2:]
+    contours, hierarchy = cv2.findContours(ImgDilate,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)[-2:]
     # x_box = [640]
     # y_box = [480]
     # w_box = [0]
@@ -84,7 +85,7 @@ while startcam:
     centerY = int(y+h/2)
     cv2.ellipse(frame,(centerX, centerY),(5,5),0,0,360,(0,0,255),2)
     cv2.ellipse(frame,(centerX, centerY),(25,25),0,0,360,(0,0,255),2)
-    cropImage = filterImg[y:y+h, x:x+w]
+    cropImage = ImgDilate[y:y+h, x:x+w]
     wh_box.clear()
     wh_box.append(0)
     coordinateFull.clear()
@@ -113,7 +114,7 @@ while startcam:
     cv2.imshow('MASK Camera Vision', mask)
     # cv2.imshow('BLUR Camera Vision', blur)
     # cv2.imshow('NONOISE Camera Vision', nonoise)
-    cv2.imshow('FILTERIMG Camera Vision', filterImg)
+    cv2.imshow('FILTERIMG Camera Vision', ImgDilate)
     # print("width = ",cropImage.shape[0])
     # print("height = ",cropImage.shape[1])
     if (cropImage.shape[0] != 0) and (cropImage.shape[1] != 0):
@@ -137,12 +138,13 @@ while startcam:
     #     # name2 = str('SavedMask'+str(num)+'.jpg')
     #     # cv2.imwrite(name2,mask)
     #     name3 = str('SavedResult'+str(num)+'.jpg')
-    #     cv2.imwrite(name3,filterImg)
+    #     cv2.imwrite(name3,ImgDilate)
 
     # else:
     #     startcam=False
     if cv2.waitKey(1) & 0xFF == ord('q'):
         startcam = False
     time.sleep(0.05)
+    # time.sleep(1)
 cam.release()
 cv2.destroyAllWindows()
