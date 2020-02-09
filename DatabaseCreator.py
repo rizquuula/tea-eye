@@ -7,8 +7,10 @@ num = 0
 while True:     # Start looping the program
     ret, frame = cam.read()
     # Set color range for threshold
-    min_color = np.array([86, 28, 181], dtype = "uint8")
-    max_color = np.array([97, 99, 255], dtype = "uint8")
+    # min_color = np.array([86, 28, 181], dtype = "uint8")
+    # max_color = np.array([97, 99, 255], dtype = "uint8")
+    min_color = np.array([76, 28, 171], dtype = "uint8")
+    max_color = np.array([107, 109, 255], dtype = "uint8")
     
     HSV = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)    # Converting BGR to HSV
     mask = cv2.inRange(HSV, min_color, max_color)   # Thresholding HSV to Binary color
@@ -21,6 +23,7 @@ while True:     # Start looping the program
 
     wh_box = [0]    # Saving w*h
     coordinateFull = [(0,0,0,0)]    # Saving the coordinate
+    
     # Looping object with contour detection
     for cnt in contours:    
         x,y,w,h = cv2.boundingRect(cnt) # set the bounding of contour object
@@ -56,11 +59,34 @@ while True:     # Start looping the program
         cv2.imshow('CROP Camera Vision', cropImage)
         cv2.imshow('CROP RESIZED Camera Vision', resized)
         print(num)
+        if ((num >100) and (num%5==0)):
+            dataType = 'Tertutup_Kiri_'
+            bgrFile = str('ImageBGR_'+dataType+str(num)+'.jpg')
+            hsvFile = str('ImageHSV_'+dataType+str(num)+'.jpg')
+            maskFile = str('ImageMask_'+dataType+str(num)+'.jpg')
+            erodeFile = str('ImageErode_'+dataType+str(num)+'.jpg')
+            dilateFile = str('ImageDilate_'+dataType+str(num)+'.jpg')
+            cropFile = str('ImageCrop_'+dataType+str(num)+'.jpg')
+            resizedFile = str('ImageResized_'+dataType+str(num)+'.jpg')
+
+            # cv2.imwrite(bgrFile,frame)
+            # cv2.imwrite(hsvFile,HSV)
+            # cv2.imwrite(maskFile,mask)
+            # cv2.imwrite(erodeFile,ImgErode)
+            # cv2.imwrite(dilateFile,ImgDilate)
+            # cv2.imwrite(cropFile,cropImage)
+            # cv2.imwrite(resizedFile,resized)
+
+        # elif num==1601:
+        #     break
+        else:
+            pass
+
         num+=1
 
     # Key to close the app
     if cv2.waitKey(1) & 0xFF == ord('q'):
-        cv2.imwrite("duatangan.jpg",frame)
+        # cv2.imwrite("duatangan.jpg",frame)
         break
     
     # time.sleep(0.05)
