@@ -1,4 +1,4 @@
-import cv2
+# import cv2
 import numpy as np
 import tensorflow as tf
 from keras.models import Model
@@ -8,8 +8,8 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
 from keras.callbacks import TensorBoard
 from keras import backend as K
-import time 
-import os
+# import time 
+# import os
 
 img_width, img_height = 20, 20
 
@@ -22,14 +22,11 @@ model = Sequential()
 
 model.add(ZeroPadding2D(padding=(2,2),input_shape=(20,20,1)))
 
-# model.add(Conv2D(16, (3, 3), input_shape=input_shape))
 model.add(Conv2D(16,(3,3),activation='relu')) 
-# model.add(Activation('relu'))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(32, (3, 3)))
-model.add(Activation('relu'))
+model.add(Conv2D(32, (3, 3),activation='relu')) 
 
 model.add(Flatten())
 
@@ -92,5 +89,5 @@ model.fit_generator(
     validation_data=validation_generator,
     validation_steps=nb_validation_samples // batch_size)
 
-model.save_weights('BismillahFirst-5epochs-W.h5')
+# model.save_weights('BismillahFirst-5epochs-W.h5')
 model.save('BismillahFirst-5epochs.h5')
