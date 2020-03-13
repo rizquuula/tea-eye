@@ -1,7 +1,7 @@
 from keras.models import load_model
 import cv2
 import numpy as np
-
+import pyautogui
 import cv2 
 import numpy as np
 import time
@@ -9,7 +9,7 @@ import time
 cam = cv2.VideoCapture(0)   # Open camera vision
 num = 0
 
-model = load_model('BismillahFirst-5epochs.h5')
+model = load_model('TeaEyeRazif-15epochs.h5')
 # model.load_weights('BismillahFirst-5epochs.h5')
 
 model.compile(loss='binary_crossentropy',
@@ -92,18 +92,26 @@ while True:     # Start looping the program
         
         print(num)
         num+=1
+        screenWidth, screenHeight = pyautogui.size() # Get the size of the primary monitor.
+        realX = (x+w/2)/640 * screenWidth
+        realY = (x+w/2)/480 * screenHeight
+        # pyautogui.moveTo(x+w/2,y+h/2)
+        pyautogui.moveTo(realX,realY)
+        
+        print("Screen: ",screenWidth, screenHeight)
         if classes==[0]:
             font = cv2.FONT_HERSHEY_SIMPLEX
             cv2.putText(frame, 'TERTUTUP', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255,255,0), 2)
-            # cv2.putText(frame,"TERTUTUP",(30,30), font, 70,(255,255,255),100)
-            print("Tertutup")
+            currentX, currentY = pyautogui.position()
+            # pyautogui.
+            print("Tertutup","clicked : ","x = ",currentX, "y = ",currentY)
         elif classes==[1]:
             font = cv2.FONT_HERSHEY_SIMPLEX
             cv2.putText(frame, 'TERBUKA', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255,0,0), 2)
-            print("Terbuka")
-    # Key to close the app
+            print("Terbuka","clicked : ","x = ",currentX, "y = ",currentY )
+    
     cv2.imshow('Original Camera Vision', frame)
-
+    # Key to close the app
     if cv2.waitKey(1) & 0xFF == ord('q'):
         # cv2.imwrite("duatangan.jpg",frame)
         break

@@ -50,9 +50,9 @@ dirTrainTerbuka = 'Training-Process/Training-Database/1-Terbuka/'
 dirValidationTertutup = 'Training-Process/Validating-Database/0-Tertutup/'
 dirValidationTerbuka = 'Training-Process/Validating-Database/1-Terbuka/'
 
-nb_train_samples = 400*2
+nb_train_samples = 500*2
 nb_validation_samples = 100*2
-epochs = 5
+epochs = 15
 batch_size = 32
 
 train_datagen = ImageDataGenerator(
@@ -90,4 +90,4 @@ model.fit_generator(
     validation_steps=nb_validation_samples // batch_size)
 
 # model.save_weights('BismillahFirst-5epochs-W.h5')
-model.save('BismillahFirst-5epochs.h5')
+model.save('TeaEyeRazif-15epochs.h5')

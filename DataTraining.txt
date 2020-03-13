@@ -1,0 +1,38 @@
+1 epoch = loss: 0.6074 - acc: 0.6653 - val_loss: 0.3986 - val_acc: 0.8177
+5 epochs = loss: 0.1312 - acc: 0.9496 - val_loss: 0.2627 - val_acc: 0.8750
+10 epochs = loss: 0.0291 - acc: 0.9909 - val_loss: 0.3853 - val_acc: 0.8929
+15 epochs = loss: 0.0162 - acc: 0.9929 - val_loss: 0.5804 - val_acc: 0.8490
+20 epochs = loss: 0.0077 - acc: 0.9990 - val_loss: 0.8180 - val_acc: 0.8571
+50 epochs = loss: 1.0984e-07 - acc: 1.0000 - val_loss: 1.6415 - val_acc: 0.8542
+100 epochs = loss: 1.0945e-07 - acc: 1.0000 - val_loss: 1.4978 - val_acc: 0.8571
+
+Testing Results: 
+
+With model name =  TeaEyeRazif-1epochs.h5
+Error =  40
+Percentage Err =  0.4  %
+--------------------
+With model name =  TeaEyeRazif-5epochs.h5
+Error =  10
+Percentage Err =  0.1  %
+--------------------
+With model name =  TeaEyeRazif-10epochs.h5
+Error =  3
+Percentage Err =  0.03  %
+--------------------
+With model name =  TeaEyeRazif-15epochs.h5
+Error =  3
+Percentage Err =  0.03  %
+--------------------
+With model name =  TeaEyeRazif-20epochs.h5
+Error =  3
+Percentage Err =  0.03  %
+--------------------
+With model name =  TeaEyeRazif-50epochs.h5
+Error =  5
+Percentage Err =  0.05  %
+--------------------
+With model name =  TeaEyeRazif-100epochs.h5
+Error =  6
+Percentage Err =  0.06  %
+--------------------
