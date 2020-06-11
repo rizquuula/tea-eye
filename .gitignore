@@ -1,12 +1,12 @@
 Light
-# VideoTenThousandCave.avi
 DatabaseCitra
 .~lock.Bismillah Tea Eye BAB 4 AjA.docx#
 Testing-Process
 Training-Process
-*.h5
 *.avi
 *.mp4
 Testing-process
-Chess-Game
-/Chess-Game
+Chess-Game/__pycache__
+Chess-Game/vscode
+.vscode
+__pycache__
