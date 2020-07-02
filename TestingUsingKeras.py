@@ -47,7 +47,7 @@ def TestingModel(modelName):
             error+=1
     print("With model name = ",modelName)
     print("Error = ",error)
-    print("Percentage Err = ",error/100," %")
+    print("Percentage Err = ",error," %")
     print("--------------------")
 
 listModel = ['TeaEyeRazif-1epochs.h5',
